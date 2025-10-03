@@ -30,28 +30,28 @@ author:
     fullname: Alberto Rodriguez-Natal
     organization: Cisco
     email: natal@cisco.com
+ -
     ins: L. M. Contreras
     fullname: Luis M. Contreras
     organization: Telefonica
     email: luismiguel.contrerasmurillo@telefonica.com
+ -
     ins: M. Palmero
     fullname: Marisol Palmero
     organization:
     email: marisol.ietf@gmail.com
+ -
     ins: J. Lindblad
     fullname: Jan Lindblad
     organization: All For Eco
     email: jan.lindblad+ietf@for.eco
+ -
     ins: A. Gallego Sanchez
     fullname: Adrian Gallego Sanchez
     organization: T-Systems
     email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
 
 normative:
--
-   test1
-   test2
-   test3
 
 informative:
 
