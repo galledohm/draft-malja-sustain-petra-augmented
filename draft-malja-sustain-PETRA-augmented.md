@@ -29,26 +29,36 @@ author:
     ins: A. Rodriguez-Natal
     fullname: Alberto Rodriguez-Natal
     organization: Cisco
+    city: Madrid
+    country: Spain
     email: natal@cisco.com
  -
     ins: L. M. Contreras
     fullname: Luis M. Contreras
     organization: Telefonica
+    city: Madrid
+    country: Spain
     email: luismiguel.contrerasmurillo@telefonica.com
  -
     ins: M. Palmero
     fullname: Marisol Palmero
     organization:
+    city: Toledo
+    country: Spain
     email: marisol.ietf@gmail.com
  -
     ins: J. Lindblad
     fullname: Jan Lindblad
     organization: All For Eco
+    city:
+    country:
     email: jan.lindblad+ietf@for.eco
  -
     ins: A. Gallego Sanchez
     fullname: Adrian Gallego Sanchez
     organization: T-Systems
+    city: Guadalajara
+    country: Spain
     email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
 
 normative:
