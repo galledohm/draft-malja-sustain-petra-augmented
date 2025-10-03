@@ -9,20 +9,20 @@ number:
 date: 04/10/2025
 consensus: true
 v: 0.0
-area: IRTF
-workgroup: SUSTAIN
+area: "IRTF"
+workgroup: "Proposed Sustainability and the Internet Proposed Research Group"
 keyword:
  - energy
  - network
  - sustainability
  - API
 venue:
-  group: RG
-  type: Research Group
-  mail: sustain@irtf.org
-  arch: https://www.irtf.org/sustain.html
-  github: USER/REPO
-  latest: https://example.com/LATEST
+  group: "Proposed Sustainability and the Internet Proposed Research Group"
+  type: "Research Group"
+  mail: "sustain@irtf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/sustain/"
+  github: "galledohm/draft-malja-sustain-PETRA-augmented"
+  latest: "https://galledohm.github.io/draft-malja-sustain-PETRA-augmented/draft-malja-sustain-PETRA-augmented.html"
 
 author:
  -
@@ -36,7 +36,7 @@ author:
     email: luismiguel.contrerasmurillo@telefonica.com
     ins: M. Palmero
     fullname: Marisol Palmero
-    organization: 
+    organization:
     email: marisol.ietf@gmail.com
     ins: J. Lindblad
     fullname: Jan Lindblad
