@@ -2,18 +2,20 @@
 
 
 
-WG Working Group                                              Y. N. Here
-Internet-Draft                                    Your Organization Here
-Intended status: Informational                            3 October 2025
+SUSTAIN                                               A. Gallego Sanchez
+Internet-Draft                                                 T-Systems
+Intended status: Informational                              October 2025
 Expires: 6 April 2026
 
 
-                           TODO - Your title
-                  draft-todo-yourname-protocol-latest
+            Path Energy Traffic Ratio API (PETRA) Augmented
+                  draft-malja-sustain-PETRA-augmented
 
 Abstract
 
-   TODO Abstract
+   This document describes an API to query a network regarding its
+   Energy Traffic Ratio and other energy-related metric for a given
+   network path.
 
 About This Document
 
@@ -21,12 +23,13 @@ About This Document
 
    The latest revision of this draft can be found at
    https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-todo-yourname-
-   protocol/.
+   be found at https://datatracker.ietf.org/doc/draft-malja-sustain-
+   PETRA/.
 
-   Discussion of this document takes place on the WG Working Group
-   mailing list (mailto:WG@example.com), which is archived at
-   https://example.com/WG.
+   Discussion of this document takes place on the RG Research Group
+   mailing list (mailto:sustain@irtf.org), which is archived at
+   https://www.irtf.org/sustain.html.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/sustain/.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/USER/REPO.
@@ -46,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 April 2026.
+   This Internet-Draft will expire on 4 April 2026.
 
 Copyright Notice
 
@@ -57,10 +60,7 @@ Copyright Notice
    Provisions Relating to IETF Documents (https://trustee.ietf.org/
    license-info) in effect on the date of publication of this document.
    Please review these documents carefully, as they describe your rights
-   and restrictions with respect to this document.  Code Components
-   extracted from this document must include Revised BSD License text as
-   described in Section 4.e of the Trust Legal Provisions and are
-   provided without warranty as described in the Revised BSD License.
+   and restrictions with respect to this document.
 
 Table of Contents
 
@@ -74,7 +74,20 @@ Table of Contents
 
 1.  Introduction
 
-   TODO Introduction
+   Sustainability is becoming one of the major societal goals for the
+   next decade, and networks are one of the major consumers of energy
+   nowadays.  Sustainability of network services is thus one of the
+   forefronts of innovation and action from network service
+   stakeholders, involving manufacturers, operators and customers.  In
+   this line, there is a shared goal of achieving better energy
+   awareness.
+
+   As with any other network metric, the energy traffic ratio could be
+   collected from the underlying network infrastructure.  However, there
+   is not a common or single definition of energy metrics towards
+   network consumers so that can be uniformly reported, particularly in
+   heterogeneous network scenarios.  This document introduces an API to
+   query networks about Energy Traffic Ratio.
 
 2.  Conventions and Definitions
 
@@ -86,7 +99,7 @@ Table of Contents
 
 3.  Security Considerations
 
-   TODO Security
+   TBD
 
 4.  IANA Considerations
 
@@ -105,10 +118,18 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   Kudos to Elis Lulja for his help with the OpenAPI specification in
+   early versions of this draft.  Thanks to Fernando Sanz Garcia and
+   Lori Jakab for their help and support on this work.
+
+   The contribution of Telefonica to this document has been supported by
+   the Smart Networks and Services Joint Undertaking (SNS JU) under the
+   European Union's Horizon Europe research and innovation projects
+   6Green (Grant Agreement no. 101096925) and Exigence (Grant Agreement
+   no. 101139120).
 
 Author's Address
 
-   Your Name Here
-   Your Organization Here
-   Email: your.email@example.com
+   Adrian Gallego Sanchez
+   T-Systems
+   Email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
