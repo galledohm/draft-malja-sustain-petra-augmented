@@ -219,15 +219,21 @@ Authors' Addresses
 
    Alberto Rodriguez-Natal
    Cisco
+   Madrid
+   Spain
    Email: natal@cisco.com
 
 
    Luis M. Contreras
    Telefonica
+   Madrid
+   Spain
    Email: luismiguel.contrerasmurillo@telefonica.com
 
 
    Marisol Palmero
+   Toledo
+   Spain
    Email: marisol.ietf@gmail.com
 
 
@@ -238,4 +244,6 @@ Authors' Addresses
 
    Adrian Gallego Sanchez
    T-Systems
+   Guadalajara
+   Spain
    Email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
