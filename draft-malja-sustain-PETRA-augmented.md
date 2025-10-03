@@ -48,6 +48,10 @@ author:
     email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
 
 normative:
+-
+   test1
+   test2
+   test3
 
 informative:
 
@@ -71,6 +75,56 @@ This document describes an API to query a network regarding its Energy Traffic R
 
 {::boilerplate bcp14-tagged}
 
+# Path Energy Traffic Ratio API (PETRA)
+
+This documents describes an API to query a network about the Energy Traffic Ratio for a given path. It takes as input the source and destination of a path along with the traffic throughput between and returns energy information related to the traffic on the path. This is energy computed by the infrastructure that is dynamically part of the traffic path. The API is agnostic to the actual hops and underlaying infrastructure that enables a path, which might change transparently to the API. This document only describes the API, the computation of the energy information to return is out of the scope of this document.
+
+## Energy Information
+
+This API allows to return a number of energy attributes associated with the path and the traffic. Currently the parameters that could be returned as energy information as part of the query are:
+
+- Watts per Gigabit: How many Watts are consumed per Gigabit of traffic traversing the path.
+- Carbon Intensity: How much carbon emissions are generated as a consequence of the energy consumed.
+Some other parameters that could be considered as well as part of the energy information include:
+
+- Renewable Percentage: How much of the energy consumed comes from renewable energy sources.
+- ...
+
+## Recursive Usage
+
+The API is envisioned in such a way that could be used recursively. That means, subpaths could report their energy consumption using PETRA and such energy consumption could be aggregated and reported for the overall path also using PETRA.
+
+Similarly, this API could be (recursively) used to provide energy information according to the definition of Service Models in an SDN context as described in [RFC8309]. In that case, using Figure 3 in [RFC8309] as reference, PETRA could be used between the Controller(s) and the Network Orchestrator(s), between the Network Orchestrator(s) and the Service Orchestrator, and between the Service Orchestrator and the Customer(s).
+
+While considering recursive usage, the aspect of double-counting shall also be taken into consideration. Double counting refers to the fact of counting more than once the same energy consumed. Organizations using PETRA in a recursive manner need to take appropriate measures to ensure no double-counting occurs across recursive calls to the API.
+
+# YANG Module
+
+This is a posible definition of PETRA as a module following the YANG specification [RFC6020].
+
+## Module Structure
+
+   '''yang
+   module: ietf-petra
+  +--rw energy
+     +---x query
+        +---w input
+        |  +---w src-ip        ietf-inet-types:ip-address
+        |  +---w dst-ip        ietf-inet-types:ip-address
+        |  +---w throughput    uint32
+        +--ro output
+           +--ro (result)?
+              +--:(success)
+              |  +--ro success
+              |     +--ro watts-per-gigabit?   decimal64
+              |     +--ro carbon-intensity?    uint32
+              +--:(invalid-address)
+                 +--ro invalid-address
+   '''
+
+## Module Definition
+
+TODO
 
 # Security Considerations
 
