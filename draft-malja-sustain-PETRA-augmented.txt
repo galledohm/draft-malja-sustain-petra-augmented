@@ -2,14 +2,21 @@
 
 
 
-SUSTAIN                                               A. Gallego Sanchez
-Internet-Draft                                                 T-Systems
-Intended status: Informational                              October 2025
-Expires: 6 April 2026
+Proposed Sustainability and the Internet Proposed Research GroupA. Rodriguez-Natal
+Internet-Draft                                                     Cisco
+Intended status: Informational                           L. M. Contreras
+Expires: 6 April 2026                                         Telefonica
+                                                              M. Palmero
+                                                                        
+                                                             J. Lindblad
+                                                             All For Eco
+                                                      A. Gallego Sanchez
+                                                               T-Systems
+                                                            October 2025
 
 
             Path Energy Traffic Ratio API (PETRA) Augmented
-                  draft-malja-sustain-PETRA-augmented
+               draft-malja-sustain-PETRA-augmented-latest
 
 Abstract
 
@@ -22,17 +29,19 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://example.com/LATEST.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-malja-sustain-
-   PETRA/.
+   https://galledohm.github.io/draft-malja-sustain-PETRA-augmented/
+   draft-malja-sustain-PETRA-augmented.html.  Status information for
+   this document may be found at https://datatracker.ietf.org/doc/draft-
+   malja-sustain-PETRA-augmented/.
 
-   Discussion of this document takes place on the RG Research Group
-   mailing list (mailto:sustain@irtf.org), which is archived at
-   https://www.irtf.org/sustain.html.  Subscribe at
+   Discussion of this document takes place on the Proposed
+   Sustainability and the Internet Proposed Research Group Research
+   Group mailing list (mailto:sustain@irtf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/sustain/.  Subscribe at
    https://www.ietf.org/mailman/listinfo/sustain/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/USER/REPO.
+   https://github.com/galledohm/draft-malja-sustain-PETRA-augmented.
 
 Status of This Memo
 
@@ -66,11 +75,17 @@ Table of Contents
 
    1.  Introduction
    2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   3.  Path Energy Traffic Ratio API (PETRA)
+     3.1.  Energy Information
+     3.2.  Recursive Usage
+   4.  YANG Module
+     4.1.  Module Structure
+     4.2.  Module Definition
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -97,15 +112,87 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Security Considerations
+3.  Path Energy Traffic Ratio API (PETRA)
+
+   This documents describes an API to query a network about the Energy
+   Traffic Ratio for a given path.  It takes as input the source and
+   destination of a path along with the traffic throughput between and
+   returns energy information related to the traffic on the path.  This
+   is energy computed by the infrastructure that is dynamically part of
+   the traffic path.  The API is agnostic to the actual hops and
+   underlaying infrastructure that enables a path, which might change
+   transparently to the API.  This document only describes the API, the
+   computation of the energy information to return is out of the scope
+   of this document.
+
+3.1.  Energy Information
+
+   This API allows to return a number of energy attributes associated
+   with the path and the traffic.  Currently the parameters that could
+   be returned as energy information as part of the query are:
+
+   *  Watts per Gigabit: How many Watts are consumed per Gigabit of
+      traffic traversing the path.
+
+   *  Carbon Intensity: How much carbon emissions are generated as a
+      consequence of the energy consumed.  Some other parameters that
+      could be considered as well as part of the energy information
+      include:
+
+   *  Renewable Percentage: How much of the energy consumed comes from
+      renewable energy sources.
+
+   *  ...
+
+3.2.  Recursive Usage
+
+   The API is envisioned in such a way that could be used recursively.
+   That means, subpaths could report their energy consumption using
+   PETRA and such energy consumption could be aggregated and reported
+   for the overall path also using PETRA.
+
+   Similarly, this API could be (recursively) used to provide energy
+   information according to the definition of Service Models in an SDN
+   context as described in [RFC8309].  In that case, using Figure 3 in
+   [RFC8309] as reference, PETRA could be used between the Controller(s)
+   and the Network Orchestrator(s), between the Network Orchestrator(s)
+   and the Service Orchestrator, and between the Service Orchestrator
+   and the Customer(s).
+
+   While considering recursive usage, the aspect of double-counting
+   shall also be taken into consideration.  Double counting refers to
+   the fact of counting more than once the same energy consumed.
+   Organizations using PETRA in a recursive manner need to take
+   appropriate measures to ensure no double-counting occurs across
+   recursive calls to the API.
+
+4.  YANG Module
+
+   This is a posible definition of PETRA as a module following the YANG
+   specification [RFC6020].
+
+4.1.  Module Structure
+
+   '''yang module: ietf-petra +--rw energy +---x query +---w input |
+   +---w src-ip ietf-inet-types:ip-address | +---w dst-ip ietf-inet-
+   types:ip-address | +---w throughput uint32 +--ro output +--ro
+   (result)?  +--:(success) | +--ro success | +--ro watts-per-gigabit?
+   decimal64 | +--ro carbon-intensity?  uint32 +--:(invalid-address)
+   +--ro invalid-address '''
+
+4.2.  Module Definition
+
+   TODO
+
+5.  Security Considerations
 
    TBD
 
-4.  IANA Considerations
+6.  IANA Considerations
 
    This document has no IANA actions.
 
-5.  Normative References
+7.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -128,7 +215,26 @@ Acknowledgments
    6Green (Grant Agreement no. 101096925) and Exigence (Grant Agreement
    no. 101139120).
 
-Author's Address
+Authors' Addresses
+
+   Alberto Rodriguez-Natal
+   Cisco
+   Email: natal@cisco.com
+
+
+   Luis M. Contreras
+   Telefonica
+   Email: luismiguel.contrerasmurillo@telefonica.com
+
+
+   Marisol Palmero
+   Email: marisol.ietf@gmail.com
+
+
+   Jan Lindblad
+   All For Eco
+   Email: jan.lindblad+ietf@for.eco
+
 
    Adrian Gallego Sanchez
    T-Systems
