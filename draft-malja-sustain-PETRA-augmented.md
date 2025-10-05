@@ -62,6 +62,8 @@ author:
     email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
 
 normative:
+  RFC2119:
+  RFC3688:
 
 informative:
 
