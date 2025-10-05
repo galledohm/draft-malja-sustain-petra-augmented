@@ -64,6 +64,15 @@ author:
 normative:
   RFC2119:
   RFC3688:
+  RFC6020:
+  RFC6241:
+  RFC6242:
+  RFC6991:
+  RFC8040:
+  RFC8174:
+  RFC8309:
+  RFC8340:
+  {{?I-D.belmq-green-framework}}:
 
 informative:
 
@@ -106,13 +115,13 @@ Some other parameters that could be considered as well as part of the energy inf
 
 The API is envisioned in such a way that could be used recursively. That means, subpaths could report their energy consumption using PETRA and such energy consumption could be aggregated and reported for the overall path also using PETRA.
 
-Similarly, this API could be (recursively) used to provide energy information according to the definition of Service Models in an SDN context as described in [RFC8309]. In that case, using Figure 3 in [RFC8309] as reference, PETRA could be used between the Controller(s) and the Network Orchestrator(s), between the Network Orchestrator(s) and the Service Orchestrator, and between the Service Orchestrator and the Customer(s).
+Similarly, this API could be (recursively) used to provide energy information according to the definition of Service Models in an SDN context as described in {{!RFC8309}}. In that case, using Figure 3 in {{!RFC830}} as reference, PETRA could be used between the Controller(s) and the Network Orchestrator(s), between the Network Orchestrator(s) and the Service Orchestrator, and between the Service Orchestrator and the Customer(s).
 
 While considering recursive usage, the aspect of double-counting shall also be taken into consideration. Double counting refers to the fact of counting more than once the same energy consumed. Organizations using PETRA in a recursive manner need to take appropriate measures to ensure no double-counting occurs across recursive calls to the API.
 
 # YANG Module
 
-This is a posible definition of PETRA as a module following the YANG specification [RFC6020].
+This is a posible definition of PETRA as a module following the YANG specification {{!RFC6020}}.
 
 ## Module Structure
 
@@ -156,3 +165,79 @@ This document has no IANA actions.
 Kudos to Elis Lulja for his help with the OpenAPI specification in early versions of this draft. Thanks to Fernando Sanz Garcia and Lori Jakab for their help and support on this work.
 
 The contribution of Telefonica to this document has been supported by the Smart Networks and Services Joint Undertaking (SNS JU) under the European Union's Horizon Europe research and innovation projects 6Green (Grant Agreement no. 101096925) and Exigence (Grant Agreement no. 101139120).
+
+# Appendix A. Use Cases {#usecases}
+
+This section describes some use-cases where this specification might be useful.
+
+## A.1. SD-WAN
+
+Software-Defined Wide-Area Networks (SD-WAN) have become a common way for enterprises to provide cost-effective connectivity across their different geographically distributed sites. Typically, SD-WAN deployments operate as an overlay network that is established on top of an existing underlay connectivity network. One aspect to consider is that in many SD-WAN production deployments the operator of the overlay network and the operator of the underlay network are different organizations.
+
+This poses an additional challenge when trying to derive sustainability metrics. Even if the underlay network is instrumented to collect energy data, this data is opaque to the operator of the overlay network which has no access to underlay information. While operators of underlay networks offer certain general network metrics to overlay operators, no interface has been defined to allow the overlay operator to query the underlay network for energy information.
+
+In this context, the PETRA specification presented in this document enables the operator of the SD-WAN network to coordinate with the underlay operator to capture sustainability data. This in turns opens further use-cases, from observability and reporting to potentially overlay policies based on underlay energy data, further enabling an overall more sustainable operation of the network.
+
+In addition to energy considerations in SD-WAN deployments, PETRA can also be leveraged for broader energy-aware service routing. In this context, network controllers and service orchestrators—such as SD-WAN controllers, transport SDN controllers, 5G slice orchestrators, or multi-domain service orchestrators—can use PETRA metrics not only to balance latency, throughput, or load, but also to optimize path selection according to sustainability objectives. For example, paths with the lowest carbon intensity or the highest share of renewable energy in their energy mix could be preferred, enabling service differentiation where “green paths” are explicitly prioritized. This brings a paradigm where routing decisions are jointly driven by network performance and environmental impact.
+
+## A.2. Multilayer Energy Management
+
+The concept of multilayer L3-L1 collection involves integrating data from different network layers to provide a comprehensive view of network operations. The use case of multilayer involves collecting and correlating data from Layer 3 (network layer) down to Layer 1 (physical layer). This multilayer approach allows for better network performance, optimization, and troubleshooting by providing end-to-end visibility.
+
+Leveraging PETRA API for multilayer L3-L1 collection use case enhances energy management by providing comprehensive visibility, enabling optimization, and supporting proactive management. This makes PETRA a useful tool for more accurate, efficient and effective energy management in modern networks.
+
+## A.3. SLA Negotiation for Green Services
+
+Another use case for PETRA could be the negotiation of green Service Level Agreements (gSLAs) between operators and enterprise customers. By exposing PETRA-derived metrics such as renewable energy percentage, carbon intensity, or sustainability scores, providers can offer differentiated SLAs that explicitly include environmental targets. This enables customers to select network services not only based on performance guarantees, but also on their environmental footprint, for example requesting that at least 60% of traffic be carried over renewable-powered infrastructure. Such gSLAs empower customers to align their digital services with corporate sustainability goals and reporting requirements, while operators can use PETRA as the trusted source of verifiable energy data.</t>
+
+# Appendix B. Requirements for Energy Efficiency Management
+
+The document Framework for Energy Efficiency Management {{I-D.belmq-green-framework}} describes a framework that comprises a controller element. In that document, the tasks of the controller are defined as "collection, compute and aggregate". In the context of that framework, the controller could also expose PETRA to offer path-related energy information. The figure below updates the one present in {{I-D.belmq-green-framework}} to add an additional interface (interface 'g') to the controller to represent the Path Traffic Ratio API.
+
+~~~~bash
++--------------------------------------------------------------------+
+|                                                                    |
+|                  (3) Network Domain Level                          |
+|                                                                    |
++--------------------------------------------------------------------+
+
+(a)             (b)             (c)
+Inventory       Monitor      +- DataSheets/DataBase
+Of identity     Energy       |  and/or via API
+and Capability  Efficiency   |  Metadata and other
+      ^              ^       | device/component/network
+      |              |       | related information:                  (g)
+      |              |       |                                      PETRA
+      |              |       |  .Power/Energy related metrics         API
+      |              |       |  .information                           ^
+      |              |       |  .origin of Energy Mix                  |
+      |              |       |  .carbon aware based on location        |
+      |              |       |                                         |
+      |              |       v                                         |
++--------------------------------------------------------------------+ |
+|                                                                    | |
+|       (2) controller (collection, compute and aggregate?)          +-+
+|                                                                    |
++--------------------------------------------------------------------+
+                ^                      ^                      ^ |
+      (d)        |     (e)              |   (f)                | |
+      Inventory  |     Monitor power    |   Control            | |
+      Capability |     Proportion       |   (Energy saving     | |
+                 |     Energy efficiency|   Functionality      | |
+                 |     ratio, power     |   Localized mgmt/    | |
+                 |     consumption,     |   network wide mgmt) | |
+                 |     etc)             |                      | |
+                 |                      |                      | v
++--------------------------------------------------------------------+
+|                                                                    |
+|                       (1) Device/Component                         |
+|                                                                    |
+| +---------+  +-----------+  +----------------+  +----------------+ |
+| | (I)     |  | (II)      |  | (III)          |  | (IV)           | |
+| |         |  |           |  | Legacy         |  | 'Attached'(PoE | |
+| | Device  |  | Component |  | Device         |  | end Point)     | |
+| |         |  |           |  |                |  |                | |
+| +---------+  +-----------+  +----------------+  +----------------+ |
++--------------------------------------------------------------------+
+~~~~
+{: #petra-framework title="PETRA Integration in Energy Management Framework"}
