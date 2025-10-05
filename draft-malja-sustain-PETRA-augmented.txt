@@ -83,8 +83,15 @@ Table of Contents
      4.2.  Module Definition
    5.  Security Considerations
    6.  IANA Considerations
-   7.  Normative References
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Acknowledgments
+   Appendix A.  Use Cases
+     A.1.  SD-WAN
+     A.2.  Multilayer Energy Management
+     A.3.  SLA Negotiation for Green Services
+   Appendix B.  Requirements for Energy Efficiency Management
    Authors' Addresses
 
 1.  Introduction
@@ -201,7 +208,9 @@ Table of Contents
 
    This document has no IANA actions.
 
-7.  Normative References
+7.  References
+
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -212,9 +221,49 @@ Table of Contents
               DOI 10.17487/RFC3688, January 2004,
               <https://www.rfc-editor.org/rfc/rfc3688>.
 
+   [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
+              the Network Configuration Protocol (NETCONF)", RFC 6020,
+              DOI 10.17487/RFC6020, October 2010,
+              <https://www.rfc-editor.org/rfc/rfc6020>.
+
+   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
+              and A. Bierman, Ed., "Network Configuration Protocol
+              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6241>.
+
+   [RFC6242]  Wasserman, M., "Using the NETCONF Protocol over Secure
+              Shell (SSH)", RFC 6242, DOI 10.17487/RFC6242, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6242>.
+
+   [RFC6991]  Schoenwaelder, J., Ed., "Common YANG Data Types",
+              RFC 6991, DOI 10.17487/RFC6991, July 2013,
+              <https://www.rfc-editor.org/rfc/rfc6991>.
+
+   [RFC8040]  Bierman, A., Bjorklund, M., and K. Watsen, "RESTCONF
+              Protocol", RFC 8040, DOI 10.17487/RFC8040, January 2017,
+              <https://www.rfc-editor.org/rfc/rfc8040>.
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC8309]  Wu, Q., Liu, W., and A. Farrel, "Service Models
+              Explained", RFC 8309, DOI 10.17487/RFC8309, January 2018,
+              <https://www.rfc-editor.org/rfc/rfc8309>.
+
+   [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
+              BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
+              <https://www.rfc-editor.org/rfc/rfc8340>.
+
+7.2.  Informative References
+
+   [I-D.belmq-green-framework]
+              Claise, B., Contreras, L. M., Lindblad, J., Palmero, M.
+              P., Stephan, E., and Q. Wu, "Framework for Energy
+              Efficiency Management", Work in Progress, Internet-Draft,
+              draft-belmq-green-framework-04, 7 July 2025,
+              <https://datatracker.ietf.org/doc/html/draft-belmq-green-
+              framework-04>.
 
 Acknowledgments
 
@@ -227,6 +276,141 @@ Acknowledgments
    European Union's Horizon Europe research and innovation projects
    6Green (Grant Agreement no. 101096925) and Exigence (Grant Agreement
    no. 101139120).
+
+Appendix A.  Use Cases
+
+   This section describes some use-cases where this specification might
+   be useful.
+
+A.1.  SD-WAN
+
+   Software-Defined Wide-Area Networks (SD-WAN) have become a common way
+   for enterprises to provide cost-effective connectivity across their
+   different geographically distributed sites.  Typically, SD-WAN
+   deployments operate as an overlay network that is established on top
+   of an existing underlay connectivity network.  One aspect to consider
+   is that in many SD-WAN production deployments the operator of the
+   overlay network and the operator of the underlay network are
+   different organizations.
+
+   This poses an additional challenge when trying to derive
+   sustainability metrics.  Even if the underlay network is instrumented
+   to collect energy data, this data is opaque to the operator of the
+   overlay network which has no access to underlay information.  While
+   operators of underlay networks offer certain general network metrics
+   to overlay operators, no interface has been defined to allow the
+   overlay operator to query the underlay network for energy
+   information.
+
+   In this context, the PETRA specification presented in this document
+   enables the operator of the SD-WAN network to coordinate with the
+   underlay operator to capture sustainability data.  This in turns
+   opens further use-cases, from observability and reporting to
+   potentially overlay policies based on underlay energy data, further
+   enabling an overall more sustainable operation of the network.
+
+   In addition to energy considerations in SD-WAN deployments, PETRA can
+   also be leveraged for broader energy-aware service routing.  In this
+   context, network controllers and service orchestrators—such as SD-WAN
+   controllers, transport SDN controllers, 5G slice orchestrators, or
+   multi-domain service orchestrators—can use PETRA metrics not only to
+   balance latency, throughput, or load, but also to optimize path
+   selection according to sustainability objectives.  For example, paths
+   with the lowest carbon intensity or the highest share of renewable
+   energy in their energy mix could be preferred, enabling service
+   differentiation where “green paths” are explicitly prioritized.  This
+   brings a paradigm where routing decisions are jointly driven by
+   network performance and environmental impact.
+
+A.2.  Multilayer Energy Management
+
+   The concept of multilayer L3-L1 collection involves integrating data
+   from different network layers to provide a comprehensive view of
+   network operations.  The use case of multilayer involves collecting
+   and correlating data from Layer 3 (network layer) down to Layer 1
+   (physical layer).  This multilayer approach allows for better network
+   performance, optimization, and troubleshooting by providing end-to-
+   end visibility.
+
+   Leveraging PETRA API for multilayer L3-L1 collection use case
+   enhances energy management by providing comprehensive visibility,
+   enabling optimization, and supporting proactive management.  This
+   makes PETRA a useful tool for more accurate, efficient and effective
+   energy management in modern networks.
+
+A.3.  SLA Negotiation for Green Services
+
+   Another use case for PETRA could be the negotiation of green Service
+   Level Agreements (gSLAs) between operators and enterprise customers.
+   By exposing PETRA-derived metrics such as renewable energy
+   percentage, carbon intensity, or sustainability scores, providers can
+   offer differentiated SLAs that explicitly include environmental
+   targets.  This enables customers to select network services not only
+   based on performance guarantees, but also on their environmental
+   footprint, for example requesting that at least 60% of traffic be
+   carried over renewable-powered infrastructure.  Such gSLAs empower
+   customers to align their digital services with corporate
+   sustainability goals and reporting requirements, while operators can
+   use PETRA as the trusted source of verifiable energy data.
+
+Appendix B.  Requirements for Energy Efficiency Management
+
+   The document Framework for Energy Efficiency Management
+   [I-D.belmq-green-framework] describes a framework that comprises a
+   controller element.  In that document, the tasks of the controller
+   are defined as "collection, compute and aggregate".  In the context
+   of that framework, the controller could also expose PETRA to offer
+   path-related energy information.  The figure below updates the one
+   present in [I-D.belmq-green-framework] to add an additional interface
+   (interface 'g') to the controller to represent the Path Traffic Ratio
+   API.
+
+   +--------------------------------------------------------------------+
+   |                                                                    |
+   |                  (3) Network Domain Level                          |
+   |                                                                    |
+   +--------------------------------------------------------------------+
+
+   (a)             (b)             (c)
+   Inventory       Monitor      +- DataSheets/DataBase
+   Of identity     Energy       |  and/or via API
+   and Capability  Efficiency   |  Metadata and other
+         ^              ^       | device/component/network
+         |              |       | related information:                  (g)
+         |              |       |                                      PETRA
+         |              |       |  .Power/Energy related metrics         API
+         |              |       |  .information                           ^
+         |              |       |  .origin of Energy Mix                  |
+         |              |       |  .carbon aware based on location        |
+         |              |       |                                         |
+         |              |       v                                         |
+   +--------------------------------------------------------------------+ |
+   |                                                                    | |
+   |       (2) controller (collection, compute and aggregate?)          +-+
+   |                                                                    |
+   +--------------------------------------------------------------------+
+                   ^                      ^                      ^ |
+         (d)        |     (e)              |   (f)                | |
+         Inventory  |     Monitor power    |   Control            | |
+         Capability |     Proportion       |   (Energy saving     | |
+                    |     Energy efficiency|   Functionality      | |
+                    |     ratio, power     |   Localized mgmt/    | |
+                    |     consumption,     |   network wide mgmt) | |
+                    |     etc)             |                      | |
+                    |                      |                      | v
+   +--------------------------------------------------------------------+
+   |                                                                    |
+   |                       (1) Device/Component                         |
+   |                                                                    |
+   | +---------+  +-----------+  +----------------+  +----------------+ |
+   | | (I)     |  | (II)      |  | (III)          |  | (IV)           | |
+   | |         |  |           |  | Legacy         |  | 'Attached'(PoE | |
+   | | Device  |  | Component |  | Device         |  | end Point)     | |
+   | |         |  |           |  |                |  |                | |
+   | +---------+  +-----------+  +----------------+  +----------------+ |
+   +--------------------------------------------------------------------+
+
+         Figure 1: PETRA Integration in Energy Management Framework
 
 Authors' Addresses
 
