@@ -114,8 +114,8 @@ This is a posible definition of PETRA as a module following the YANG specificati
 
 ## Module Structure
 
-   '''yang
-   module: ietf-petra
+~~~~yang
+module: ietf-petra
   +--rw energy
      +---x query
         +---w input
@@ -130,7 +130,7 @@ This is a posible definition of PETRA as a module following the YANG specificati
               |     +--ro carbon-intensity?    uint32
               +--:(invalid-address)
                  +--ro invalid-address
-   '''
+~~~~
 
 ## Module Definition
 
