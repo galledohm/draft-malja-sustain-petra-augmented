@@ -5,7 +5,7 @@
 Proposed Sustainability and the Internet Proposed Research GroupA. Rodriguez-Natal
 Internet-Draft                                                     Cisco
 Intended status: Informational                           L. M. Contreras
-Expires: 6 April 2026                                         Telefonica
+Expires: 8 April 2026                                         Telefonica
                                                               M. Palmero
                                                                         
                                                              J. Lindblad
@@ -173,12 +173,21 @@ Table of Contents
 
 4.1.  Module Structure
 
-   '''yang module: ietf-petra +--rw energy +---x query +---w input |
-   +---w src-ip ietf-inet-types:ip-address | +---w dst-ip ietf-inet-
-   types:ip-address | +---w throughput uint32 +--ro output +--ro
-   (result)?  +--:(success) | +--ro success | +--ro watts-per-gigabit?
-   decimal64 | +--ro carbon-intensity?  uint32 +--:(invalid-address)
-   +--ro invalid-address '''
+   module: ietf-petra
+     +--rw energy
+        +---x query
+           +---w input
+           |  +---w src-ip        ietf-inet-types:ip-address
+           |  +---w dst-ip        ietf-inet-types:ip-address
+           |  +---w throughput    uint32
+           +--ro output
+              +--ro (result)?
+                 +--:(success)
+                 |  +--ro success
+                 |     +--ro watts-per-gigabit?   decimal64
+                 |     +--ro carbon-intensity?    uint32
+                 +--:(invalid-address)
+                    +--ro invalid-address
 
 4.2.  Module Definition
 
@@ -198,6 +207,10 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC3688]  Mealling, M., "The IETF XML Registry", BCP 81, RFC 3688,
+              DOI 10.17487/RFC3688, January 2004,
+              <https://www.rfc-editor.org/rfc/rfc3688>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
