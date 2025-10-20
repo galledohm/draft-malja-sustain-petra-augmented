@@ -124,6 +124,47 @@ Similarly, this API could be (recursively) used to provide energy information ac
 
 While considering recursive usage, the aspect of double-counting shall also be taken into consideration. Double counting refers to the fact of counting more than once the same energy consumed. Organizations using PETRA in a recursive manner need to take appropriate measures to ensure no double-counting occurs across recursive calls to the API.
 
+~~~~bash
+
+                                                 Customer
+                            ------------------   Service  ----------
+                           |                  |  Model   |          |
+PETRA as                   |     Service      |<-------->| Customer |
+Customer Service           |   Orchestrator   |    (a)   |          |
+related API                |                  |           ----------
+                            ------------------
+                               .          .
+##########################    .            .        (b)   -----------
+                             . (b)          .      ......|Application|
+                            .                .     :     |  BSS/OSS  |
+PETRA as                   .                  .    :      -----------
+Service related API       .  Service Delivery  .   :
+                         .       Model          .  :
+                 ------------------    ------------------
+                |                  |  |                  |
+#############   |     Network      |  |     Network      | 
+                |   Orchestrator   |  |   Orchestrator   |
+                |                  |  |                  |
+                .------------------    ------------------.
+PETRA as               .         :                       :        .
+Network API   .         : Network Configuration :         .
+            .            :        Model          :         .
+      ------------     ------------     ------------    ------------
+     |            |   |            |   |            |  |            |
+###  | Controller |   | Controller |   | Controller |  | Controller |
+     |            |   |            |   |            |  |            |
+      ------------     ------------     ------------    ------------
+         :              .       .                 :            :
+         :             .         .      Device    :            :
+         :            .           . Configuration :            :
+         :            .           .     Model     :            :
+     ---------     ---------   ---------     ---------      ---------
+    | Network |   | Network | | Network |   | Network |    | Network |
+    | Element |   | Element | | Element |   | Element |    | Element |
+     ---------     ---------   ---------     ---------      ---------
+~~~~
+
+
 # YANG Module
 
 This is a posible definition of PETRA as a module following the YANG specification [RFC6020].
@@ -413,8 +454,7 @@ module irtf-petra {
 
 # Security Considerations
 
-TBD
-
+In order to mitigate security risks, the PETRA API should implement the necessary mechanisms for authentication, secure data transfer and privacy preservation. On the other hand, in order to prevent denial of service attacks, new subsequent similar requests could be silently ignored during periods or time, or even requests from the same client could be filtered to prevent system (i.e., controller or orchestrator) affection.
 
 # IANA Considerations
 
