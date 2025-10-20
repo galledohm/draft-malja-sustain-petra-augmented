@@ -1,3 +1,4 @@
+export UPLOAD_EMAIL ?= adrian.gallego-sanchez@t-systems.com
 LIBDIR := lib
 include $(LIBDIR)/main.mk
 
