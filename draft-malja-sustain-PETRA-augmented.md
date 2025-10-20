@@ -3,7 +3,7 @@ title: "Path Energy Traffic Ratio API (PETRA) Augmented"
 abbrev: "Energy-API Augmented"
 category: info
 
-docname: draft-malja-sustain-PETRA-augmented-latest
+docname: draft-malja-sustain-petra-augmented-latest
 submissiontype: IRTF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date: 04/10/2025
@@ -22,7 +22,7 @@ venue:
   mail: "sustain@irtf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/sustain/"
   github: "galledohm/draft-malja-sustain-PETRA-augmented"
-  latest: "https://galledohm.github.io/draft-malja-sustain-PETRA-augmented/draft-malja-sustain-PETRA-augmented.html"
+  latest: "https://galledohm.github.io/draft-malja-sustain-PETRA-augmented/draft-malja-sustain-petra-augmented.html"
 
 author:
  -
