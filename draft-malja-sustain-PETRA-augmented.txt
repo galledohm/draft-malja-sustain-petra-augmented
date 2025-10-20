@@ -2,16 +2,16 @@
 
 
 
-Proposed Sustainability and the Internet Proposed Research GroupA. Rodriguez-Natal
-Internet-Draft                                                     Cisco
-Intended status: Informational                           L. M. Contreras
-Expires: 9 April 2026                                         Telefonica
+Proposed Sustainability and the Internet Proposed Research GroupA. Gallego Sanchez
+Internet-Draft                                                 T-Systems
+Intended status: Informational                        A. Rodriguez-Natal
+Expires: 23 April 2026                                             Cisco
+                                                         L. M. Contreras
+                                                              Telefonica
                                                               M. Palmero
                                                                         
                                                              J. Lindblad
                                                              All For Eco
-                                                      A. Gallego Sanchez
-                                                               T-Systems
                                                             October 2025
 
 
@@ -703,6 +703,13 @@ Appendix B.  Requirements for Energy Efficiency Management
 
 Authors' Addresses
 
+   Adrian Gallego Sanchez
+   T-Systems
+   Guadalajara
+   Spain
+   Email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
+
+
    Alberto Rodriguez-Natal
    Cisco
    Madrid
@@ -726,10 +733,3 @@ Authors' Addresses
    Jan Lindblad
    All For Eco
    Email: jan.lindblad+ietf@for.eco
-
-
-   Adrian Gallego Sanchez
-   T-Systems
-   Guadalajara
-   Spain
-   Email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
