@@ -142,7 +142,7 @@ Service related API       .  Service Delivery  .   :
                          .       Model          .  :
                  ------------------    ------------------
                 |                  |  |                  |
-#############   |     Network      |  |     Network      | 
+#############   |     Network      |  |     Network      |
                 |   Orchestrator   |  |   Orchestrator   |
                 |                  |  |                  |
                 .------------------    ------------------.
