@@ -1,4 +1,4 @@
----
+<img width="279" height="94" alt="image" src="https://github.com/user-attachments/assets/df2186b7-c8f7-4307-95d9-09dc4d57faa8" />---
 title: "Path Energy Traffic Ratio API (PETRA) Augmented"
 abbrev: "Energy-API Augmented"
 category: info
@@ -99,6 +99,7 @@ This document describes an API to query a network about the Energy Traffic Ratio
 
 The API can return a variety of energy-related parameters to provide a complete view of path sustainability. These include: base energy efficiency indicators, energy mix, renewable energy contributions, and standby or idle consumption.
 
+Furthermore, the PETRA's energy parameters complement ongoing work on green service intents [I-D.irtf-nmrg-ibn-usecases], enabling customers to express sustainability objectives such as energy consumption thresholds, renewable energy usage, and carbon intensity limits. PETRA provides the underlying energy measurement interface necessary for providers to fulfill, assure, and report on these green intents. Moreover, by exposing detailed energy and carbon-related parameters, PETRA can allow intent translation components to map green service objectives into network resource allocation and path selection decisions.
 
 ## Energy Information
 
@@ -427,7 +428,9 @@ This document has no IANA actions.
 
 Kudos to Elis Lulja for his help with the OpenAPI specification in early versions of this draft. Thanks to Fernando Sanz Garcia and Lori Jakab for their help and support on this work.
 
-The contribution of Telefonica to this document has been supported by the Smart Networks and Services Joint Undertaking (SNS JU) under the European Union's Horizon Europe research and innovation projects 6Green (Grant Agreement no. 101096925) and Exigence (Grant Agreement no. 101139120).
+The contribution of A. Gallego Sánchez to this document has been partially supported by the Smart Networks and Services Joint Undertaking (SNS JU) under the European Union's Horizon Europe research and innovation project Sustain6G (Grant Agreement no. 101191936).
+
+The contribution of L.M. Contreras to this document has been partially supported by the Smart Networks and Services Joint Undertaking (SNS JU) under the European Union's Horizon Europe research and innovation projects 6Green (Grant Agreement no. 101096925) and Exigence (Grant Agreement no. 101139120).
 
 # Appendix A. Use Cases {#usecases}
 {:numbered="false"}
@@ -456,6 +459,8 @@ Leveraging PETRA API for multilayer L3-L1 collection use case enhances energy ma
 {:numbered="false"}
 
 Another use case for PETRA could be the negotiation of green Service Level Agreements (gSLAs) between operators and enterprise customers. By exposing PETRA-derived metrics such as renewable energy percentage, carbon intensity, or sustainability scores, providers can offer differentiated SLAs that explicitly include environmental targets. This enables customers to select network services not only based on performance guarantees, but also on their environmental footprint, for example requesting that at least 60% of traffic be carried over renewable-powered infrastructure. Such gSLAs empower customers to align their digital services with corporate sustainability goals and reporting requirements, while operators can use PETRA as the trusted source of verifiable energy data.
+
+gSLAs can be negotiated using customer-expressed green intents that specify objectives such as maximum energy consumption, minimum energy efficiency, carbon emission limits, and renewable energy usage [I-D.irtf-nmrg-ibn-usecases]. PETRA's metrics, including watts per gigabit, carbon intensity, and energy mix, provide essential measurements to translate these intents into network configurations and to monitor compliance during service operation. The lifecycle of green intents, encompassing fulfillment and assurance phases [RFC9315], can be supported by PETRA through its capability to deliver real-time energy metrics for translation into network policies and subsequent monitoring and validation.
 
 # Appendix B. Requirements for Energy Efficiency Management
 {:numbered="false"}
