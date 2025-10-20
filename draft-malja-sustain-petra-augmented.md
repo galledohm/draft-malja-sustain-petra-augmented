@@ -1,4 +1,4 @@
-<img width="279" height="94" alt="image" src="https://github.com/user-attachments/assets/df2186b7-c8f7-4307-95d9-09dc4d57faa8" />---
+---
 title: "Path Energy Traffic Ratio API (PETRA) Augmented"
 abbrev: "Energy-API Augmented"
 category: info
