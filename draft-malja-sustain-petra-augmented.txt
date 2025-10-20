@@ -16,7 +16,7 @@ Expires: 23 April 2026                                             Cisco
 
 
             Path Energy Traffic Ratio API (PETRA) Augmented
-               draft-malja-sustain-PETRA-augmented-latest
+               draft-malja-sustain-petra-augmented-latest
 
 Abstract
 
@@ -29,10 +29,10 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://galledohm.github.io/draft-malja-sustain-PETRA-augmented/
-   draft-malja-sustain-PETRA-augmented.html.  Status information for
+   https://galledohm.github.io/draft-malja-sustain-petra-augmented/
+   draft-malja-sustain-petra-augmented.html.  Status information for
    this document may be found at https://datatracker.ietf.org/doc/draft-
-   malja-sustain-PETRA-augmented/.
+   malja-sustain-petra-augmented/.
 
    Discussion of this document takes place on the Proposed
    Sustainability and the Internet Proposed Research Group Research
@@ -41,7 +41,7 @@ About This Document
    https://www.ietf.org/mailman/listinfo/sustain/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/galledohm/draft-malja-sustain-PETRA-augmented.
+   https://github.com/galledohm/draft-malja-sustain-petra-augmented.
 
 Status of This Memo
 
