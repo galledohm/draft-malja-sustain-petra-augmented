@@ -25,6 +25,13 @@ venue:
   latest: "https://galledohm.github.io/draft-malja-sustain-PETRA-augmented/draft-malja-sustain-PETRA-augmented.html"
 
 author:
+-
+    ins: A. Gallego Sanchez
+    fullname: Adrian Gallego Sanchez
+    organization: T-Systems
+    city: Guadalajara
+    country: Spain
+    email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
  -
     ins: A. Rodriguez-Natal
     fullname: Alberto Rodriguez-Natal
@@ -51,13 +58,6 @@ author:
     fullname: Jan Lindblad
     organization: All For Eco
     email: jan.lindblad+ietf@for.eco
- -
-    ins: A. Gallego Sanchez
-    fullname: Adrian Gallego Sanchez
-    organization: T-Systems
-    city: Guadalajara
-    country: Spain
-    email: ADRIAN.GALLEGO-SANCHEZ@t-systems.com
 
 normative:
   RFC3688:
