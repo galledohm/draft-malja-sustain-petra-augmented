@@ -216,6 +216,43 @@ Table of Contents
    appropriate measures to ensure no double-counting occurs across
    recursive calls to the API.
 
+                                                    Customer
+                               ------------------   Service  ----------
+                              |                  |  Model   |          |
+   PETRA as                   |     Service      |<-------->| Customer |
+   Customer Service           |   Orchestrator   |    (a)   |          |
+   related API                |                  |           ----------
+                               ------------------
+                                  .          .
+   ##########################    .            .        (b)   -----------
+                                . (b)          .      ......|Application|
+                               .                .     :     |  BSS/OSS  |
+   PETRA as                   .                  .    :      -----------
+   Service related API       .  Service Delivery  .   :
+                            .       Model          .  :
+                    ------------------    ------------------
+                   |                  |  |                  |
+   #############   |     Network      |  |     Network      |
+                   |   Orchestrator   |  |   Orchestrator   |
+                   |                  |  |                  |
+                   .------------------    ------------------.
+   PETRA as               .         :                       :        .
+   Network API   .         : Network Configuration :         .
+               .            :        Model          :         .
+         ------------     ------------     ------------    ------------
+        |            |   |            |   |            |  |            |
+   ###  | Controller |   | Controller |   | Controller |  | Controller |
+        |            |   |            |   |            |  |            |
+         ------------     ------------     ------------    ------------
+            :              .       .                 :            :
+            :             .         .      Device    :            :
+            :            .           . Configuration :            :
+            :            .           .     Model     :            :
+        ---------     ---------   ---------     ---------      ---------
+       | Network |   | Network | | Network |   | Network |    | Network |
+       | Element |   | Element | | Element |   | Element |    | Element |
+        ---------     ---------   ---------     ---------      ---------
+
 4.  YANG Module
 
    This is a posible definition of PETRA as a module following the YANG
@@ -502,7 +539,13 @@ Table of Contents
 
 5.  Security Considerations
 
-   TBD
+   In order to mitigate security risks, the PETRA API should implement
+   the necessary mechanisms for authentication, secure data transfer and
+   privacy preservation.  On the other hand, in order to prevent denial
+   of service attacks, new subsequent similar requests could be silently
+   ignored during periods or time, or even requests from the same client
+   could be filtered to prevent system (i.e., controller or
+   orchestrator) affection.
 
 6.  IANA Considerations
 

@@ -1307,6 +1307,46 @@ appear in all capitals, as shown here.<a href="#section-2-1" class="pilcrow">¶<
 <p id="section-3.2-1">The API is envisioned in such a way that could be used recursively. That means, subpaths could report their energy consumption using PETRA and such energy consumption could be aggregated and reported for the overall path also using PETRA.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Similarly, this API could be (recursively) used to provide energy information according to the definition of Service Models in an SDN context as described in <span>[<a href="#RFC8309" class="cite xref">RFC8309</a>]</span>. In that case, using Figure 3 in <span>[<a href="#RFC8309" class="cite xref">RFC8309</a>]</span> as reference, PETRA could be used between the Controller(s) and the Network Orchestrator(s), between the Network Orchestrator(s) and the Service Orchestrator, and between the Service Orchestrator and the Customer(s).<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <p id="section-3.2-3">While considering recursive usage, the aspect of double-counting shall also be taken into consideration. Double counting refers to the fact of counting more than once the same energy consumed. Organizations using PETRA in a recursive manner need to take appropriate measures to ensure no double-counting occurs across recursive calls to the API.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+<div class="lang-bash sourcecode" id="section-3.2-4">
+<pre>
+                                                 Customer
+                            ------------------   Service  ----------
+                           |                  |  Model   |          |
+PETRA as                   |     Service      |&lt;--------&gt;| Customer |
+Customer Service           |   Orchestrator   |    (a)   |          |
+related API                |                  |           ----------
+                            ------------------
+                               .          .
+##########################    .            .        (b)   -----------
+                             . (b)          .      ......|Application|
+                            .                .     :     |  BSS/OSS  |
+PETRA as                   .                  .    :      -----------
+Service related API       .  Service Delivery  .   :
+                         .       Model          .  :
+                 ------------------    ------------------
+                |                  |  |                  |
+#############   |     Network      |  |     Network      |
+                |   Orchestrator   |  |   Orchestrator   |
+                |                  |  |                  |
+                .------------------    ------------------.
+PETRA as               .         :                       :        .
+Network API   .         : Network Configuration :         .
+            .            :        Model          :         .
+      ------------     ------------     ------------    ------------
+     |            |   |            |   |            |  |            |
+###  | Controller |   | Controller |   | Controller |  | Controller |
+     |            |   |            |   |            |  |            |
+      ------------     ------------     ------------    ------------
+         :              .       .                 :            :
+         :             .         .      Device    :            :
+         :            .           . Configuration :            :
+         :            .           .     Model     :            :
+     ---------     ---------   ---------     ---------      ---------
+    | Network |   | Network | | Network |   | Network |    | Network |
+    | Element |   | Element | | Element |   | Element |    | Element |
+     ---------     ---------   ---------     ---------      ---------
+</pre><a href="#section-3.2-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 </section>
@@ -1619,7 +1659,7 @@ module irtf-petra {
       <h2 id="name-security-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-5-1">TBD<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-1">In order to mitigate security risks, the PETRA API should implement the necessary mechanisms for authentication, secure data transfer and privacy preservation. On the other hand, in order to prevent denial of service attacks, new subsequent similar requests could be silently ignored during periods or time, or even requests from the same client could be filtered to prevent system (i.e., controller or orchestrator) affection.<a href="#section-5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
