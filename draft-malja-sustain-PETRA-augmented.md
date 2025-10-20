@@ -21,8 +21,8 @@ venue:
   type: "Research Group"
   mail: "sustain@irtf.org"
   arch: "https://mailarchive.ietf.org/arch/browse/sustain/"
-  github: "galledohm/draft-malja-sustain-PETRA-augmented"
-  latest: "https://galledohm.github.io/draft-malja-sustain-PETRA-augmented/draft-malja-sustain-petra-augmented.html"
+  github: "galledohm/draft-malja-sustain-petra-augmented"
+  latest: "https://galledohm.github.io/draft-malja-sustain-petra-augmented/draft-malja-sustain-petra-augmented.html"
 
 author:
  -
