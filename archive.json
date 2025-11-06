@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-04T00:20:29.297906+00:00",
+  "timestamp": "2025-11-06T00:20:48.468716+00:00",
   "repo": "galledohm/draft-malja-sustain-petra-augmented",
   "labels": [
     {
@@ -49,6 +49,63 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOP7fm_c7WFIXn",
+      "title": "Next Steps: Terminology",
+      "url": "https://github.com/galledohm/draft-malja-sustain-petra-augmented/issues/1",
+      "state": "OPEN",
+      "author": "marisolpalmero",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Reference draft-bclp-green-terminology and extend in the current draft o create a new draft/registry with the new terms and metrics which are not covered by the GREEN terminology draft\n",
+      "createdAt": "2025-11-05T15:38:28Z",
+      "updatedAt": "2025-11-05T15:38:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOP7fm_c7WFKhq",
+      "title": "Next Steps: model integration",
+      "url": "https://github.com/galledohm/draft-malja-sustain-petra-augmented/issues/2",
+      "state": "OPEN",
+      "author": "marisolpalmero",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Define YANG augment points within PETRA core data model and/or probably with the to be define common data model for GREEN (Jan is working on).\nFor Example\nAdding new leaves like: source-id, measurement-method, confidence, sample-period.\n\n",
+      "createdAt": "2025-11-05T15:40:22Z",
+      "updatedAt": "2025-11-05T15:44:12Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "marisolpalmero",
+          "authorAssociation": "NONE",
+          "body": "This can be either an augment module or integrated directly into ietf-petra core.\n\nAdds measurement provenance (traceability), improving auditability and comparison across implementations.\n\n\nmodule petra-augment-measurement {\n  yang-version 1.1;\n  namespace \"urn:ietf:params:xml:ns:yang:petra-augment-measurement\";\n  prefix pam;\n\n  import ietf-petra {\n    prefix petra;\n  }\n\n  organization\n    \"IETF GREEN WG / PETRA Extensions Taskforce\";\n  contact\n    \"WG mailing list: green@ietf.org\";\n  description\n    \"Augment module extending PETRA YANG to include provenance and measurement metadata fields.\";\n\n  revision 2025-11-05 {\n    description\n      \"Initial version adding measurement provenance and confidence metadata.\";\n  }\n\n  augment \"/petra:petra/petra:metrics/petra:metric\" {\n    description\n      \"Adds provenance and measurement accuracy details to each metric instance.\";\n\n    leaf source-id {\n      type string;\n      description\n        \"Unique identifier for the source or device providing the measurement (e.g., UUID or URI).\";\n    }\n\n    leaf measurement-method {\n      type enumeration {\n        enum direct { description \"Measured directly from hardware sensor or interface counter.\"; }\n        enum estimated { description \"Derived using estimation or modeling techniques.\"; }\n        enum aggregated { description \"Aggregated from multiple measurements or time periods.\"; }\n      }\n      description\n        \"Indicates how the metric value was obtained.\";\n    }\n\n    leaf confidence {\n      type decimal64 {\n        fraction-digits 2;\n        range \"0.0 .. 1.0\";\n      }\n      description\n        \"Confidence level (0\u20131) representing estimated accuracy of the measurement.\";\n    }\n\n    leaf sample-period {\n      type uint32;\n      units \"seconds\";\n      description\n        \"Sampling interval used for the measurement, in seconds.\";\n    }\n  }\n}\n\n\n\n",
+          "createdAt": "2025-11-05T15:44:12Z",
+          "updatedAt": "2025-11-05T15:44:12Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOP7fm_c7WFM3B",
+      "title": "Next Steps: introduction of \"policy\" based per role",
+      "url": "https://github.com/galledohm/draft-malja-sustain-petra-augmented/issues/3",
+      "state": "OPEN",
+      "author": "marisolpalmero",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Introduce related concept as \"energy data visibility\" per role",
+      "createdAt": "2025-11-05T15:42:50Z",
+      "updatedAt": "2025-11-05T15:42:50Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
